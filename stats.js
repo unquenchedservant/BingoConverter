@@ -1,211 +1,205 @@
 const STATS = 682100497
 const HUB = 0 
-// runs at the end of the show (not on a trigger, currently)
-// If updating just the Last Checked column, use getLastChecked()
+const MAXROW = 176
+
+
+function onEdit(e) {
+  if (e.range.getSheet().getName() !== "Stats") return;
+  const STAT_SHEET = e.source.getSheetByName("Stats");
+  const HUB_SHEET = e.source.getSheetByName("Hub");
+  getLastChecked(STAT_SHEET, HUB_SHEET);
+}
+
+//USE THIS ONE FOR TESTING
+function testing(){
+  const STAT_SHEET = SpreadsheetApp.getActive().getSheetByName("Stats")
+  const HUB_SHEET = SpreadsheetApp.getActive().getSheetByName("Hub")
+  getLongestStat('Y', STAT_SHEET, HUB_SHEET)
+}
+
+//USE THIS ONE AT END OF EPISODE
 function updateStats(){
-  const test = SpreadsheetApp.getActiveSpreadsheet()
-  console.log("test")
-  const statSheet = SpreadsheetApp.getActive().getSheetByName("Stats")
-  const hubSheet = SpreadsheetApp.getActive().getSheetByName("Hub")
-  getLastChecked(statSheet, hubSheet)
-  getActiveStat("Y", statSheet, hubSheet)
-  getActiveStat("N", statSheet, hubSheet)
-  getLongestStat("Y", statSheet, hubSheet)
-  getLongestStat("N", statSheet, hubSheet) 
+  const STAT_SHEET = SpreadsheetApp.getActive().getSheetByName("Stats")
+  const HUB_SHEET = SpreadsheetApp.getActive().getSheetByName("Hub")
+  getActiveStat("Y", STAT_SHEET, HUB_SHEET)
+  getActiveStat("N", STAT_SHEET, HUB_SHEET)
+  getLongestStat("Y", STAT_SHEET, HUB_SHEET)
+  getLongestStat("N", STAT_SHEET, HUB_SHEET)
+  updateAverages(STAT_SHEET, HUB_SHEET)
+}
+
+function updateAverages(statSheet, hubSheet){
+  console.log("Updating Averages")
+  const FRI_ROW = 3
+  const SAT_ROW = 4
+  const AVG_COL = 11
+  const TOT_COL = 12
+  const NIGHT_COL = 13
+  const ROW_RNG = statSheet.getRange("2:2").getValues()[0]
+  const NIGHT_ROW = MAXROW + 3
+  const AMT_ROW = MAXROW + 2
+  const LAST_COL = getLastColumn(ROW_RNG)
+  const NIGHT_DATA = statSheet.getRange(NIGHT_ROW, 2, 1, LAST_COL - 1).getValues()[0]
+  const AMT_DATA = statSheet.getRange(AMT_ROW, 2, 1, LAST_COL - 1).getValues()[0]
+  let friTotal = 0
+  let satTotal = 0
+  let friCount = 0
+  let satCount = 0
+  for (let i = 0; i < NIGHT_DATA.length; i++) {
+    const AMT = AMT_DATA[i];
+    const NIGHT = NIGHT_DATA[i];
+    if (NIGHT === "F"){
+      friCount++
+      friTotal += AMT
+    }else if (NIGHT === "S"){
+      satCount++
+      satTotal += AMT
+    }
+  }
+  const FRI_AVG = friTotal / friCount
+  const SAT_AVG = satTotal / satCount
+  console.log(`Friday avg: ${FRI_AVG}`)
+  console.log(`Saturday avg: ${SAT_AVG}`)
+  hubSheet.getRange(FRI_ROW, AVG_COL).setValue(Math.round(FRI_AVG))
+  hubSheet.getRange(SAT_ROW, AVG_COL).setValue(Math.round(SAT_AVG))
+  hubSheet.getRange(FRI_ROW, TOT_COL).setValue(friTotal)
+  hubSheet.getRange(SAT_ROW, TOT_COL).setValue(satTotal)
+  hubSheet.getRange(FRI_ROW, NIGHT_COL).setValue(friCount)
+  hubSheet.getRange(SAT_ROW, NIGHT_COL).setValue(satCount)
 }
 
 function getLastChecked(statsSheet, hubSheet) {
-  const maxRow = 176
-  const targetColumn = 2
+  console.log("Updating Last Checked")
+  const TGT_COL = 2
 
-  const lastDate = statsSheet.getRange(1, targetColumn).getValues()[0][0]
-  const allData = statsSheet.getRange(2, 1, maxRow - 1, targetColumn).getValues()
-  const hubRowMap = getHubRowMap(hubSheet)
+  const LAST_DATE = statsSheet.getRange(1, TGT_COL).getValues()[0][0]
+  const ALL_DATA = statsSheet.getRange(2, 1, MAXROW - 1, TGT_COL).getValues()
+  const HUB_ROW_MAP = getHubRowMap(hubSheet)
 
-  for (let i = 0; i < allData.length; i++) {
-    const rowName = allData[i][0]
-    const currentCell = allData[i][targetColumn - 1]
-    if (currentCell == "Y") {
-      const hubRow = hubRowMap[rowName]
-      if (hubRow !== undefined) {
-        hubSheet.getRange(hubRow, 3).setValue(lastDate)
-        console.log("Updated " + rowName + " - " + lastDate)
+  for (let i = 0; i < ALL_DATA.length; i++) {
+    const ROW_NAME = ALL_DATA[i][0]
+    const CUR_CELL = ALL_DATA[i][TGT_COL - 1]
+    if (CUR_CELL == "Y") {
+      const HUB_ROW = HUB_ROW_MAP[ROW_NAME]
+      if (HUB_ROW !== undefined) {
+        hubSheet.getRange(HUB_ROW, 3).setValue(LAST_DATE)
       }
     }
   }
 }
 
-// NO LONGER NEEDED, NEEDS TO BE REWORKED. 
-function fullCheckForYes() { 
-  const statsSheet = SpreadsheetApp.getActive().getSheetById(STATS)
-  const hubSheet = SpreadsheetApp.getActive().getSheetById(HUB)
-
-  const rowRange = statsSheet.getRange("2:2").getValues()[0]
-  const lastColumn = getLastColumn(rowRange)
-  const maxRow = 176
-
-  const allData = statsSheet.getRange(1, 1, maxRow, lastColumn).getValues()
-  const dateRow = allData[0]
-  const hubRowMap = getHubRowMap(hubSheet)  // one read, up front
-
-  const hubUpdates = []
-  for (let i = 1; i < allData.length; i++) {
-    const row = allData[i]
-    const rowName = row[0]
-
-    let lastYesCol = -1
-    for (let col = 1; col < lastColumn; col++) {
-      if (row[col] == "Y") lastYesCol = col
-    }
-
-    const lastDate = lastYesCol !== -1 ? dateRow[lastYesCol] : "N/A"
-    hubUpdates.push({ rowName, lastDate })
-    console.log(rowName + " - " + lastDate)
-  }
-
-  for (const { rowName, lastDate } of hubUpdates) {
-    const hubRow = hubRowMap[rowName]
-    if (hubRow !== undefined) {
-      hubSheet.getRange(hubRow, 3).setValue(lastDate)
-    }
-  }
-}
-
 function getHubRowMap(hubSheet) {
-  const maxRow = 176
-  const names = hubSheet.getRange(2, 1, maxRow - 1, 1).getValues()
-  const map = {}
-  for (let i = 0; i < names.length; i++) {
-    const name = names[i][0]
-    if (name) map[name] = i + 2  // +2 to account for 1-index and skipped header
+  const NAMES = hubSheet.getRange(2, 1, MAXROW - 1, 1).getValues()
+  const MAP = {}
+  for (let i = 0; i < NAMES.length; i++) {
+    const NAME = NAMES[i][0]
+    if (NAME) MAP[NAME] = i + 2  // +2 to account for 1-index and skipped header
   }
-  return map
+  return MAP
 }
 
-function getLastStatRow(statSheet){
-  // TODO
-}
 function getLastColumn(rowRange) {
   for (let i = rowRange.length - 1; i >= 0; i--) {
     if (rowRange[i] !== "") return i + 1  // +1 to convert 0-index to column number
   }
   return 0
 }
-function getActiveStat(yOrN, statsSheet, hubSheet){
-  const hubRowMap = getHubRowMap(hubSheet)
-  const rowRange = statsSheet.getRange("2:2").getValues()[0]
-  const maxRow = 176
-  let debugStr = ""
-  let editCol = 5
-  const lastCol = getLastColumn(rowRange)
 
-  const allData = statsSheet.getRange(2, 1, maxRow - 1, lastCol).getValues()
+function getActiveStat(yOrN, statsSheet, hubSheet){
+  const HUB_ROW_MAP = getHubRowMap(hubSheet)
+  const ROW_RANGE = statsSheet.getRange("2:2").getValues()[0]
+  let editCol = 5
+  const LAST_COL = getLastColumn(ROW_RANGE)
+
+  const ALL_DATA = statsSheet.getRange(2, 1, MAXROW - 1, LAST_COL).getValues()
   if (yOrN === "Y"){
-    debugStr = " streak: "
+    console.log("Getting active streak")
     editCol = 5
   } else {
-    debugStr = " drought: "
+    console.log("Getting active drought")
     editCol = 6
   }
-  for (let i = 0; i < allData.length; i++) {
-    const row = allData[i]
-    const rowName = row[0]
+  for (let i = 0; i < ALL_DATA.length; i++) {
+    const ROW = ALL_DATA[i]
+    const ROW_NAME = ROW[0]
     let statStreak = 0
-    for (let col = 1; col < lastCol; col++) {
-      if (row[col] === yOrN) statStreak++
+    for (let col = 1; col < LAST_COL; col++) {
+      if (ROW[col] === yOrN) statStreak++
       else break
     }
-    const hubRow = hubRowMap[rowName]
-    if (hubRow !== undefined) {
-      hubSheet.getRange(hubRow, editCol).setValue(statStreak)
-      console.log("Updated " + rowName + debugStr + " - " + statStreak)
+    const HUB_ROW = HUB_ROW_MAP[ROW_NAME]
+    if (HUB_ROW !== undefined) {
+      hubSheet.getRange(HUB_ROW, editCol).setValue(statStreak)
     }
   }
 }
 
 function getLongestStat(yOrN, statsSheet, hubSheet){
-  const hubRowMap = getHubRowMap(hubSheet)
-  const rowRange = statsSheet.getRange("2:2").getValues()[0]
-  const maxRow = 176
-  let debugStr = ""
+  const HRM = getHubRowMap(hubSheet)
+  const RR = statsSheet.getRange("2:2").getValues()[0]
   let editCol = 7
-  const lastCol = getLastColumn(rowRange)
+  const LC = getLastColumn(RR)
+  const TERM_SHEET = SpreadsheetApp.getActive().getSheetByName("Hall of Terms");
 
-  const verifyMap = {
-    "Anything Illegal": "7/26/24",
-    "Call Clinger": "11/17/23",
-    "Camera Operator Olympics": "7/26/24",
-    "Choo Choo": "5/05/23",
-    "Daisy Dukes": "9/15/23",
-    "Filming a Documentary": "7/26/24",
-    "Hands Up": "11/29/24",
-    "High-Vis Clothing": "3/14/25",
-    "Hoopty": "9/15/23",
-    "I'll Have Your Badge": "4/17/24",
-    "Lost in Translation": "6/17/23",
-    "Off Fleek": "9/15/23",
-    "PIT Manuever": "4/22/23",
-    "Pull to the Right": "3/28/25",
-    "Rock and Roll All Nite": "5/05/23",
-    "Send Backup": "5/30/25",
-    "Snow": "11/21/25",
-    "Talked Myself Into Cuffs": "10/13/23",
-    "Traffic Cone": "3/09/24",
-    "U-Haul": "4/22/23",
-    "Vest Rest": "9/29/23",
-    "Waffle House": "7/26/24",
-    "Welcome to the Jungle": "9/22/23",
-    "Welfare Check": "9/15/23",
-    "Wrong Way Driver": "11/21/25",
-    "Your Incident Has Been Updated": "1/31/26"
+  const START_COL = 1
+  const END_COL   = 2
+  const START_ROW = 2
+  const END_ROW   = 27
+
+  const TERM_TABLE = TERM_SHEET.getRange(START_ROW, START_COL, END_ROW - 1, END_COL).getValues()
+  const VERIFY_MAP = {}
+  for (let i = 0; i < TERM_TABLE.length; i++){
+    const TERM = TERM_TABLE[i][0]
+    const TERM_INTRO_DATE = Utilities.formatDate(TERM_TABLE[i][1], Session.getScriptTimeZone(), "M/d/yy")
+    VERIFY_MAP[TERM] = TERM_INTRO_DATE
   }
 
-  const allData = statsSheet.getRange(2, 1, maxRow - 1, lastCol).getValues()
-  const dateRow = statsSheet.getRange(1, 1, 1, lastCol).getValues()[0]
+  console.log(VERIFY_MAP)
+  const ALL_DATA = statsSheet.getRange(2, 1, MAXROW - 1, LC).getValues()
+  const DATE_ROW = statsSheet.getRange(1, 1, 1, LC).getValues()[0]
   let opposite = ""
   if (yOrN === "Y"){
-    debugStr = " streak: "
     opposite = "N"
     editCol = 7
+    console.log("Getting Longest Active Streaks")
   } else {
-    debugStr = " drought: "
+    console.log("Getting Longest Active Droughts")
     opposite = "Y"
     editCol = 8
   }
-  for (let i = 0; i < allData.length; i++) {
-    const row = allData[i]
-    const rowName = row[0]
+  for (let i = 0; i < ALL_DATA.length; i++) {
+    const ROW = ALL_DATA[i]
+    const ROW_NAME = ROW[0]
     let longest = 0
     let statStreak = 0
-    for (let col = 1; col < lastCol; col++) {
-      if (row[col] === yOrN) {
+    for (let col = 1; col < LC; col++) {
+      if (ROW[col] === yOrN) {
         statStreak++
         if (statStreak > longest){
           longest = statStreak
         }
-      } else if (row[col] === ""){
+      } else if (ROW[col] === ""){
         if (statStreak > longest){
           longest = statStreak
           statStreak = 0
         }
         break
-      } else if (row[col] === opposite){
+      } else if (ROW[col] === opposite){
         if (statStreak > longest) {
           longest = statStreak
         }
         statStreak = 0
-        if (rowName in verifyMap) {
-          if (verifyMap[rowName] == dateRow[col]) {
-            break
-          }
+      }
+      if (ROW_NAME in VERIFY_MAP) {
+        if (VERIFY_MAP[ROW_NAME] == DATE_ROW[col]) {
+          break
         }
       }
     }
 
-    const hubRow = hubRowMap[rowName]
-    if (hubRow !== undefined) {
-      hubSheet.getRange(hubRow, editCol).setValue(longest)
-      console.log("Updated " + rowName + debugStr + " - " + longest)
+    const HUB_ROW = HRM[ROW_NAME]
+    if (HUB_ROW !== undefined) {
+      hubSheet.getRange(HUB_ROW, editCol).setValue(longest)
     }
   }
 }
