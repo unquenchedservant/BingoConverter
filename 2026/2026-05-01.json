@@ -1,0 +1,711 @@
+{
+  "timestamp": "2026-05-02T04:01:51.035Z",
+  "date": "5/1/2026",
+  "terms": {
+    "New Episode": {
+      "confirmed": true,
+      "checks": 24
+    },
+    "ATV": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Accident": {
+      "confirmed": true,
+      "checks": 11
+    },
+    "Actin' a Fool": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Ambulance": {
+      "confirmed": true,
+      "checks": 15
+    },
+    "Ammunition": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Ankle Bracelet": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Anything Illegal": {
+      "confirmed": true,
+      "checks": 15
+    },
+    "Armed Robbery": {
+      "confirmed": true,
+      "checks": 11
+    },
+    "Arrested": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Assault": {
+      "confirmed": true,
+      "checks": 10
+    },
+    "Assault Rifle": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Barefoot": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Barking Dog": {
+      "confirmed": true,
+      "checks": 17
+    },
+    "Beer": {
+      "confirmed": true,
+      "checks": 16
+    },
+    "Bicycle": {
+      "confirmed": true,
+      "checks": 18
+    },
+    "Bing Bing Bingo": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Birthday": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Blood": {
+      "confirmed": true,
+      "checks": 8
+    },
+    "Blunt": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Breathalyzer": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Brick O' Weed": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Broken Headlight": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Broken Taillight": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Burglary": {
+      "confirmed": true,
+      "checks": 11
+    },
+    "Call Clinger": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Camouflage": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Camera Operator Olympics": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Car Chase": {
+      "confirmed": true,
+      "checks": 14
+    },
+    "Car Seat": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Censor Overload": {
+      "confirmed": true,
+      "checks": 10
+    },
+    "Child Neglect": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Choo Choo": {
+      "confirmed": true,
+      "checks": 18
+    },
+    "Cigarette": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Cocaine": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Code Brown": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Convict": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Cop Take Down": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Cranium Art": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Crying": {
+      "confirmed": true,
+      "checks": 10
+    },
+    "Cycling Dirty": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "DUI Test": {
+      "confirmed": true,
+      "checks": 10
+    },
+    "Daisy Dukes": {
+      "confirmed": true,
+      "checks": 10
+    },
+    "Dan Abrams Stand-up": {
+      "confirmed": true,
+      "checks": 16
+    },
+    "Destroying Evidence": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Dog Bite": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Dollar Store": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Domestic Animal": {
+      "confirmed": true,
+      "checks": 16
+    },
+    "Domestic Disturbance": {
+      "confirmed": true,
+      "checks": 11
+    },
+    "Don't Film Me": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Drone": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Drug Bust": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Drug Paraphernalia": {
+      "confirmed": true,
+      "checks": 14
+    },
+    "Drugs Tossed": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Evidence on Car": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Farm Animal": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Fence Jumper": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Field Test": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Fight": {
+      "confirmed": true,
+      "checks": 7
+    },
+    "Filming a Documentary": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Fire": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Fire Engine": {
+      "confirmed": true,
+      "checks": 14
+    },
+    "Fist Bump": {
+      "confirmed": true,
+      "checks": 7
+    },
+    "Five Finger Discount": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Foot Chase": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Frequent-Flyer": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Get a Room": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Giftie": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Goober Grazing": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Good Samaritan": {
+      "confirmed": true,
+      "checks": 10
+    },
+    "Got Talent": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Gun Found": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Gun Show": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Gurney Deployed": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Handcuffed": {
+      "confirmed": true,
+      "checks": 14
+    },
+    "Hands Up": {
+      "confirmed": true,
+      "checks": 11
+    },
+    "Handshake": {
+      "confirmed": true,
+      "checks": 10
+    },
+    "Helicopter": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Hit & Run": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "High-Vis Clothing": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Home Base": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Hooker": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Hoopty": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Id Issues": {
+      "confirmed": true,
+      "checks": 17
+    },
+    "I'll Have Your Badge": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Just Bought It": {
+      "confirmed": true,
+      "checks": 14
+    },
+    "K9 Used": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Kitty Cat": {
+      "confirmed": true,
+      "checks": 14
+    },
+    "Knife Found": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Latex Gloves": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Lawnmower": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Liar, Liar": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Littering and": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Liquor": {
+      "confirmed": true,
+      "checks": 14
+    },
+    "Lost in Translation": {
+      "confirmed": true,
+      "checks": 10
+    },
+    "Lovers": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Man Bun": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Meth": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Moonwalker": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Motorcycle Chase": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Narcan": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Needle": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Nice Trip": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Night Vision": {
+      "confirmed": true,
+      "checks": 16
+    },
+    "No Insurance": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "No Pants": {
+      "confirmed": true,
+      "checks": 15
+    },
+    "No Seat Belt": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Noise Complaint": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Not My...": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Off Fleek": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Open Container": {
+      "confirmed": true,
+      "checks": 15
+    },
+    "Opioids": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "PIT Maneuver": {
+      "confirmed": true,
+      "checks": 16
+    },
+    "Personal Locker": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Pills": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Pipe": {
+      "confirmed": true,
+      "checks": 16
+    },
+    "Plate Problems": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Police Tape": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Pour it Out": {
+      "confirmed": true,
+      "checks": 11
+    },
+    "Probation": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Pull to the Right": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Resisting Arrest": {
+      "confirmed": true,
+      "checks": 10
+    },
+    "Retail Therapist": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Ridin' Dirty": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Ridin' Dirty Trifecta": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Rights Read": {
+      "confirmed": true,
+      "checks": 11
+    },
+    "Rock and Roll All Nite": {
+      "confirmed": true,
+      "checks": 9
+    },
+    "Sagging Pants": {
+      "confirmed": true,
+      "checks": 11
+    },
+    "Scales": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Search": {
+      "confirmed": true,
+      "checks": 14
+    },
+    "Send Backup": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Sex Offender": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Sexy Time": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Shirtless": {
+      "confirmed": true,
+      "checks": 17
+    },
+    "Shopping Cart": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Shotgun": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Shots Fired": {
+      "confirmed": true,
+      "checks": 16
+    },
+    "Shout-out": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Show the Tape": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Smells Like Weed": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Snow": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Socks 'n Slides": {
+      "confirmed": true,
+      "checks": 14
+    },
+    "Spike Strip": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Spitting": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Sports Fan": {
+      "confirmed": true,
+      "checks": 14
+    },
+    "Stolen Car": {
+      "confirmed": true,
+      "checks": 9
+    },
+    "Street Lawyer": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Superhero": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Suspicious Vehicle": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Tag Light": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Talked Myself Into Cuffs": {
+      "confirmed": true,
+      "checks": 8
+    },
+    "Taser": {
+      "confirmed": true,
+      "checks": 14
+    },
+    "Tattoos": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Thank You": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Tint Violation": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Touch Tail Light": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Tow Truck": {
+      "confirmed": true,
+      "checks": 19
+    },
+    "Traffic Cone": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Traffic Stop": {
+      "confirmed": true,
+      "checks": 11
+    },
+    "Trespassing": {
+      "confirmed": true,
+      "checks": 11
+    },
+    "Two Beers": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "U-Haul": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Underage Drinking": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Urine Trouble": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Vest Rest": {
+      "confirmed": true,
+      "checks": 9
+    },
+    "Wad of Cash": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Waffle House": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Warning": {
+      "confirmed": true,
+      "checks": 16
+    },
+    "Warrant": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Weed Found": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Welcome to the Jungle": {
+      "confirmed": false,
+      "checks": 0
+    },
+    "Welfare Check": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Wild Animal": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Word to Your Mother": {
+      "confirmed": true,
+      "checks": 13
+    },
+    "Wrong Way Driver": {
+      "confirmed": true,
+      "checks": 12
+    },
+    "Your Incident Has Been Updated": {
+      "confirmed": false,
+      "checks": 0
+    }
+  },
+  "_open": false
+}
